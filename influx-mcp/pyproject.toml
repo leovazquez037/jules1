@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "influx-mcp"
+version = "0.1.0"
+description = "MCP server for querying InfluxDB (v1/v2) with IoT-focused tools"
+authors = ["Jules <agent@example.com>"]
+readme = "README.md"
+packages = [{include = "influx_mcp"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+mcp = "^1.9.4"  # Use a recent version of the official MCP SDK
+influxdb-client = {version = "^1.40.0", extras = ["ciso"]}
+influxdb = "^5.3.1"
+pydantic = "^2.5.0"
+python-dateutil = "^2.8.2"
+pandas = {version = "^2.0.0", optional = true} # Optional dependency
+loguru = "^0.7.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.3"
+pytest-mock = "^3.12.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+influx-mcp-server = "influx_mcp.server:main"
